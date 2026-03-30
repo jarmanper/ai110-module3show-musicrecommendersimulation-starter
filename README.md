@@ -15,7 +15,7 @@ Replace this paragraph with your own summary of what your version does.
 
 ## How The System Works
 
-Real-world music recommenders generally fall into two camps. Collaborative filtering learns from the behavior of many users — if people who loved Song A also loved Song B, it recommends Song B to new fans of Song A without ever inspecting the songs themselves. Content-based filtering takes a different approach: it looks directly at song attributes like genre, mood, and energy, then recommends songs whose features match a specific user's preferences. Most production systems (Spotify, YouTube Music) blend both, using collaborative signals to surface surprising picks and content signals to explain or refine them.
+Real-world music recommenders generally fall into two camps. Collaborative filtering learns from the behavior of many users: if people who loved Song A also loved Song B, it recommends Song B to new fans of Song A without ever inspecting the songs themselves. Content-based filtering takes a different approach: it looks directly at song attributes like genre, mood, and energy, then recommends songs whose features match a specific user's preferences. Most production systems (Spotify, YouTube Music) blend both, using collaborative signals to surface surprising picks and content signals to explain or refine them.
 
 **Features used by this system's objects:**
 
@@ -30,7 +30,7 @@ Real-world music recommenders generally fall into two camps. Collaborative filte
 | Mood match (song mood == user's preferred mood) | +1.0 |
 | Energy similarity (`1.0 - abs(song.energy - user.target_energy)`) | +0.0 to +1.0 |
 
-**Potential bias:** Because genre carries the most weight, songs that only match mood or energy will rarely surface ahead of a genre match — even a weak one.
+**Potential bias:** Because genre carries the most weight, songs that only match mood or energy will rarely surface ahead of a genre match, even a weak one.
 
 ## Sample Output
 
