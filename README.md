@@ -17,17 +17,22 @@ Replace this paragraph with your own summary of what your version does.
 
 ## How The System Works
 
-Explain your design in plain language.
+Real-world music recommenders use two main strategies: **collaborative filtering** learns from the behavior of many users — if listeners who loved Song A also loved Song B, the system recommends Song B to new fans of Song A, without ever inspecting the songs themselves. **Content-based filtering**, by contrast, analyzes the attributes of the songs directly — things like genre, mood, and energy — and recommends songs whose features closely match a specific user's stated preferences. Most production systems (like Spotify or YouTube Music) blend both approaches, using collaborative signals to discover surprising matches and content signals to explain or refine them.
 
-Some prompts to answer:
+**Features used by this system's objects:**
 
-- What features does each `Song` use in your system
-  - For example: genre, mood, energy, tempo
-- What information does your `UserProfile` store
-- How does your `Recommender` compute a score for each song
-- How do you choose which songs to recommend
+- `Song`: `genre`, `mood`, `energy` (core scoring features); `tempo_bpm`, `valence`, `danceability`, `acousticness` (stored, available for future scoring)
+- `UserProfile`: preferred `genre`, preferred `mood`, target `energy` level
 
-You can include a simple diagram or bullet list if helpful.
+### Algorithm Recipe
+
+| Signal | Points |
+|---|---|
+| Genre match (song genre == user's preferred genre) | +2.0 |
+| Mood match (song mood == user's preferred mood) | +1.0 |
+| Energy similarity (`1.0 - abs(song.energy - user.target_energy)`) | +0.0 to +1.0 |
+
+**Potential bias:** This system might over-prioritize genre, ignoring great songs that just match the user's mood.
 
 ---
 
